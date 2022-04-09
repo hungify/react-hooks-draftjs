@@ -13,7 +13,7 @@ const ButtonGroup = styled.div`
 const RichEditorControl = styled.div`
   font-family: "Helvetica", sans-serif;
   font-size: 14px;
-  margin-bottom: 5px;
+  padding: 10px 20px;
   user-select: none;
   display: flex;
   flex-direction: ${(prop) => (prop.layout === "vertical" ? "column" : "row")};

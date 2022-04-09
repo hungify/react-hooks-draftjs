@@ -1,7 +1,7 @@
 import { Editor, EditorState, RichUtils } from "draft-js";
 import React from "react";
 import styled from "styled-components";
-import DisplayEditor from "../DisplayEditor/DisplayEditor";
+import PreviewEditor from "../PreviewEditor/PreviewEditor";
 import InputLink from "../InputLink/InputLink";
 import { linkDecorator } from "../Link/Link";
 import Toolbar from "../Toolbar/Toolbar";
@@ -16,10 +16,20 @@ const styleMap = {
 
 const RichEditorRoot = styled.div`
   background: #fff;
-  border: 1px solid #ddd;
   font-family: "Georgia", serif;
-  font-size: 14px;
   padding: 15px;
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-around;
+`;
+const WrapEditor = styled.div`
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 100%;
+`;
+
+const EditorInner = styled.div`
+  min-height: 300px;
+  padding: 20px;
 `;
 
 export default function RichEditor() {
@@ -93,14 +103,14 @@ export default function RichEditor() {
 
   return (
     <RichEditorRoot>
-      <Toolbar
-        editorState={editorState}
-        onInlineToggle={handleToggleInlineType}
-        onBlockToggle={handleToggleBlockType}
-        layout="vertical"
-      />
-      {showURLInput && (
-        <div>
+      <WrapEditor>
+        <Toolbar
+          editorState={editorState}
+          onInlineToggle={handleToggleInlineType}
+          onBlockToggle={handleToggleBlockType}
+          layout="vertical"
+        />
+        {showURLInput && (
           <InputLink
             ref={urlRef}
             type="text"
@@ -110,20 +120,20 @@ export default function RichEditor() {
             onRemoveLink={handleRemoveLink}
             onEnterDown={(e) => e.key === "Enter" && handleConfirmLink(e)}
           />
-        </div>
-      )}
+        )}
 
-      <div className="RichEditor-editor" onClick={() => editorRef.current.focus()}>
-        <Editor
-          blockStyleFn={getBlockStyle}
-          customStyleMap={styleMap}
-          editorState={editorState}
-          onChange={(value) => setEditorState(value)}
-          placeholder="Tell a story..."
-          ref={editorRef}
-        />
-      </div>
-      <DisplayEditor dataRender={editorState} />
+        <EditorInner onClick={() => editorRef.current.focus()}>
+          <Editor
+            blockStyleFn={getBlockStyle}
+            customStyleMap={styleMap}
+            editorState={editorState}
+            onChange={(value) => setEditorState(value)}
+            placeholder="Tell a story..."
+            ref={editorRef}
+          />
+        </EditorInner>
+      </WrapEditor>
+      <PreviewEditor dataRender={editorState} />
     </RichEditorRoot>
   );
 }

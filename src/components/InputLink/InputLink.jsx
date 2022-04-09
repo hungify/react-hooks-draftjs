@@ -1,18 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 const Wrapper = styled.div`
-  position: relative;
+  display: flex;
+  justify-content: center;
 `;
 
 const Modal = styled.div`
   display: flex;
-  justify-content: space-between;
   white-space: nowrap;
   background: #fff;
   box-shadow: 0 1px 18px 0 rgba(0, 0, 0, 0.3);
-  width: 360px;
+  width: 70%;
+  justify-content: space-between;
+`;
+const WrapInput = styled.div`
+  width: 100%;
+  overflow: hidden;
 `;
 const ModalInput = styled.input`
+  width: 100%;
   outline: none;
   border: none;
   color: #181818;
@@ -42,18 +48,19 @@ const Button = styled.button`
 `;
 
 function Input({ onInputChange, urlValue, onConfirmLink, onRemoveLink, onEnterDown }, ref) {
-  console.log("🚀 :: ref", ref);
   return (
     <Wrapper>
       <Modal>
-        <ModalInput
-          onChange={(e) => onInputChange(e.target.value)}
-          ref={ref}
-          type="text"
-          onKeyDown={(e) => onEnterDown(e)}
-          value={urlValue}
-          placeholder="Enter a link and press enter"
-        />
+        <WrapInput>
+          <ModalInput
+            onChange={(e) => onInputChange(e.target.value)}
+            ref={ref}
+            type="text"
+            onKeyDown={(e) => onEnterDown(e)}
+            value={urlValue}
+            placeholder="Enter a link and press enter"
+          />
+        </WrapInput>
         <WrapButton>
           <Button type="button" onMouseDown={(e) => onConfirmLink(e)}>
             <svg fill="currentColor" width={18} height={18} viewBox="0 0 24 24">
