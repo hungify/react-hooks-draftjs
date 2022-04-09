@@ -24,21 +24,22 @@ const RichEditorRoot = styled.div`
 
 export default function RichEditor() {
   const [editorState, setEditorState] = React.useState(EditorState.createEmpty(linkDecorator()));
-  const editorRef = React.useRef();
+  const editorRef = React.useRef(null);
+  const urlRef = React.useRef(null);
+  const [showURLInput, setShowURLInput] = React.useState(false);
   const [urlValue, setUrlValue] = React.useState("");
-  const urlRef = React.useRef();
-  const [showModalLink, setShowModalLink] = React.useState(false);
-
-  function focusEditor() {
-    editorRef.current.focus();
-  }
 
   React.useEffect(() => {
-    focusEditor();
+    editorRef.current.focus();
   }, []);
 
-  const handleOpenPrompt = (e) => {
-    setShowModalLink(true);
+  React.useEffect(() => {
+    if (showURLInput) {
+      setTimeout(() => urlRef.current.focus(), 0);
+    }
+  }, [showURLInput]);
+
+  const handleOpenModal = (e) => {
     e.preventDefault();
     const selection = editorState.getSelection();
     if (!selection.isCollapsed()) {
@@ -53,34 +54,19 @@ export default function RichEditor() {
       } else {
         setUrlValue("");
       }
-      setShowModalLink(true);
-      setTimeout(() => {
-        editorRef.urlRef.focus();
-      }, 0);
+      setShowURLInput(true);
     }
   };
 
   const handleConfirmLink = (e) => {
     e.preventDefault();
     const contentState = editorState.getCurrentContent();
-
     const contentStateWithEntity = contentState.createEntity("LINK", "MUTABLE", { url: urlValue });
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-
-    const nextEditorState = EditorState.set(editorState, {
-      currentContent: contentStateWithEntity,
-    });
-
-    const newNextEditorState = RichUtils.toggleLink(
-      nextEditorState,
-      nextEditorState.getSelection(),
-      entityKey
-    );
-
-    setEditorState(newNextEditorState);
-    setShowModalLink(false);
+    const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
+    setEditorState(RichUtils.toggleLink(newEditorState, newEditorState.getSelection(), entityKey));
+    setShowURLInput(false);
     setUrlValue("");
-    setTimeout(() => editorRef.current.focus(), 0);
   };
 
   const handleRemoveLink = (e) => {
@@ -89,44 +75,45 @@ export default function RichEditor() {
     if (!selection.isCollapsed()) {
       setEditorState(RichUtils.toggleLink(editorState, selection, null));
     }
-    setShowModalLink(false);
+    setShowURLInput(false);
   };
 
-  const handleToggleBlockType = (blockType, active) => {
-    if (blockType === "link") {
-      setShowModalLink(active);
+  const handleToggleBlockType = (blockType, e, active) => {
+    if (blockType === "link" && active) {
+      handleOpenModal(e);
     } else {
-      setShowModalLink(false);
+      setShowURLInput(false);
     }
     setEditorState(RichUtils.toggleBlockType(editorState, blockType));
   };
 
-  const handleToggleInlineType = (inlineType, e, active) => {
+  const handleToggleInlineType = (inlineType) => {
     setEditorState(RichUtils.toggleInlineStyle(editorState, inlineType));
   };
 
   return (
-    <RichEditorRoot className="RichEditor-root">
+    <RichEditorRoot>
       <Toolbar
         editorState={editorState}
         onInlineToggle={handleToggleInlineType}
         onBlockToggle={handleToggleBlockType}
         layout="vertical"
       />
-      {showModalLink && (
+      {showURLInput && (
         <div>
           <InputLink
             ref={urlRef}
             type="text"
-            value={urlValue}
+            urlValue={urlValue}
             onInputChange={(value) => setUrlValue(value)}
             onConfirmLink={handleConfirmLink}
             onRemoveLink={handleRemoveLink}
+            onEnterDown={(e) => e.key === "Enter" && handleConfirmLink(e)}
           />
         </div>
       )}
 
-      <div className="RichEditor-editor" onClick={focusEditor}>
+      <div className="RichEditor-editor" onClick={() => editorRef.current.focus()}>
         <Editor
           blockStyleFn={getBlockStyle}
           customStyleMap={styleMap}

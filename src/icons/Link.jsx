@@ -7,7 +7,6 @@ export default function Link() {
       viewBox="0 0 24 24"
       stroke="currentColor"
       strokeWidth="2"
-      className="transform transition-transform duration-500 ease-in-out"
     >
       <path
         strokeLinecap="round"
