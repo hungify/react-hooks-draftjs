@@ -47,7 +47,18 @@ const Button = styled.button`
   }
 `;
 
-function Input({ onInputChange, urlValue, onConfirmLink, onRemoveLink, onEnterDown }, ref) {
+function Input(props, ref) {
+  const { onInputChange, urlValue, onConfirm, onRemoveLink, onEnterDown, urlType } = props;
+
+  const handleConfirm = (e) => {
+    onConfirm(e, urlType);
+  };
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      onEnterDown(e, urlType);
+    }
+  };
+
   return (
     <Wrapper>
       <Modal>
@@ -56,13 +67,13 @@ function Input({ onInputChange, urlValue, onConfirmLink, onRemoveLink, onEnterDo
             onChange={(e) => onInputChange(e.target.value)}
             ref={ref}
             type="text"
-            onKeyDown={(e) => onEnterDown(e)}
+            onKeyDown={handleKeyDown}
             value={urlValue}
             placeholder="Enter a link and press enter"
           />
         </WrapInput>
         <WrapButton>
-          <Button type="button" onMouseDown={(e) => onConfirmLink(e)}>
+          <Button type="button" onMouseDown={handleConfirm}>
             <svg fill="currentColor" width={18} height={18} viewBox="0 0 24 24">
               <path d="M0 0h24v24H0z" fill="none" />
               <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
