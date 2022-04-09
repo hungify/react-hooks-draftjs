@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import "./style.css";
 const Wrapper = styled.div`
   position: relative;
 `;
