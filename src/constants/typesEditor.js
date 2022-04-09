@@ -25,7 +25,7 @@ export const ALL_TYPE = {
     { label: "Blockquote", style: "blockquote", icon: <Blockquote /> },
     { label: "OL", style: "ordered-list-item", icon: <NumberedList /> },
     { label: "UL", style: "unordered-list-item", icon: <BulletedList /> },
-    { label: "Link", style: "link", icon: <Link /> },
-    { label: "Image", style: "image", icon: <Image /> },
+    { label: "Link", style: "Link", icon: <Link /> },
+    { label: "Image", style: "Image", icon: <Image /> },
   ],
 };

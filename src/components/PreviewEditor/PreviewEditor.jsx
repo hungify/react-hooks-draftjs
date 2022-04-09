@@ -22,7 +22,8 @@ const WrapEditorPreview = styled.div`
 const convertToEditorContent = (editorState) => {
   if (editorState.getCurrentContent().hasText()) {
     const editorStateRaw = convertToRaw(editorState.getCurrentContent());
-    return EditorState.createWithContent(convertFromRaw(editorStateRaw), linkDecorator());
+    const content = EditorState.createWithContent(convertFromRaw(editorStateRaw), linkDecorator());
+    return content;
   }
   return EditorState.createEmpty();
 };
