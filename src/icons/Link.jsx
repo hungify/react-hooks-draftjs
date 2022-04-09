@@ -1,8 +1,8 @@
 export default function Link() {
   return (
     <svg
-      width="24"
-      height="24"
+      width="20"
+      height="20"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"

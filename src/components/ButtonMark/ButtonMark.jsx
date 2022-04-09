@@ -2,10 +2,9 @@ import React from "react";
 import styled from "styled-components";
 export const Button = styled.button`
   color: ${(props) => (props.active ? "#00ad9e" : "#616c7a")};
-  background-color: ${(props) => (props.active ? "#rgba(0, 173, 158, 0.1)" : "transparent")};
+  background-color: ${(props) => (props.active ? "rgba(0, 173, 158, 0.1)" : "transparent")};
   border: none;
   padding: 0.25rem;
-  height: 2rem;
   width: 2rem;
   margin: 2px;
   border-radius: 6px;
