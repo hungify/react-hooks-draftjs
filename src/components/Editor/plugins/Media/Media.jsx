@@ -6,7 +6,7 @@ export default function Media({ contentState, block }) {
   const type = entity.getType();
 
   let media;
-  if (type === "image") {
+  if (type === "IMAGE") {
     media = <Image src={src} />;
   }
 

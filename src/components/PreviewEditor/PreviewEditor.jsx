@@ -2,13 +2,17 @@ import { linkDecorator } from "components/Editor/plugins/Link/Link";
 import { convertFromRaw, Editor, convertToRaw, EditorState } from "draft-js";
 import React from "react";
 import styled from "styled-components";
+import { stateToHTML } from "draft-js-export-html";
+
 const Wrapper = styled.div`
   background: #dddddd;
-  color: #006778;
   font-size: 2rem;
   width: 100%;
   height: 100%;
   min-height: 500px;
+  max-width: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
 `;
 const Title = styled.div`
   padding: 10px;
@@ -31,11 +35,14 @@ const convertToEditorContent = (editorState) => {
 export default function PreviewEditor({ dataRender }) {
   const contentState = convertToEditorContent(dataRender);
 
+  const __html = stateToHTML(dataRender.getCurrentContent());
+
   return (
     <Wrapper>
       <Title>Preview</Title>
       <WrapEditorPreview>
         <Editor editorState={contentState} readOnly={true} />
+        <div>{__html}</div>
       </WrapEditorPreview>
     </Wrapper>
   );
