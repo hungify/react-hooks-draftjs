@@ -1,6 +1,6 @@
+import { linkDecorator } from "components/Editor/plugins/Link/Link";
 import { convertFromRaw, Editor, convertToRaw, EditorState } from "draft-js";
 import React from "react";
-import { linkDecorator } from "../Link/Link";
 import styled from "styled-components";
 const Wrapper = styled.div`
   background: #dddddd;
@@ -29,7 +29,7 @@ const convertToEditorContent = (editorState) => {
 };
 
 export default function PreviewEditor({ dataRender }) {
-  const contentState = convertToEditorContent(dataRender, linkDecorator());
+  const contentState = convertToEditorContent(dataRender);
 
   return (
     <Wrapper>

@@ -1,12 +1,12 @@
 import { Editor, EditorState, RichUtils } from "draft-js";
 import React from "react";
 import styled from "styled-components";
-import PreviewEditor from "../PreviewEditor/PreviewEditor";
-import InputLink from "../InputLink/InputLink";
-import { linkDecorator } from "../Link/Link";
-import Toolbar from "../Toolbar/Toolbar";
 import { AtomicBlockUtils } from "draft-js";
-import Media from "../Media/Media";
+import Prompt from "components/Editor/components/Prompt";
+import Toolbar from "components/Editor/components/Toolbar";
+import PreviewEditor from "components/PreviewEditor/PreviewEditor";
+import { linkDecorator } from "components/Editor/plugins/Link/Link";
+import Media from "components/Editor/plugins/Media/Media";
 const styleMap = {
   CODE: {
     backgroundColor: "rgba(0, 0, 0, 0.05)",
@@ -153,7 +153,7 @@ export default function RichEditor() {
         />
 
         {showURLInput && (
-          <InputLink
+          <Prompt
             ref={urlRef}
             type="text"
             urlValue={urlValue}

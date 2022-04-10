@@ -1,4 +1,4 @@
-import Image from "./Image";
+import Image from "components/Editor/components/Image";
 
 export default function Media({ contentState, block }) {
   const entity = contentState.getEntity(block.getEntityAt(0));

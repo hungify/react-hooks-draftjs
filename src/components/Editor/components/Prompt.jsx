@@ -93,5 +93,5 @@ function Input(props, ref) {
   );
 }
 
-const InputLink = React.forwardRef(Input);
-export default InputLink;
+const Prompt = React.forwardRef(Input);
+export default Prompt;

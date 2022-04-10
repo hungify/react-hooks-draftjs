@@ -1,7 +1,7 @@
+import ButtonMark from "components/Editor/components/ButtonMark";
+import { ALL_TYPE } from "constants/editorTypes";
 import React from "react";
 import styled from "styled-components";
-import { ALL_TYPE } from "../../constants/typesEditor";
-import ButtonMark from "../ButtonMark/ButtonMark";
 
 const ButtonGroup = styled.div`
   display: inline-flex;

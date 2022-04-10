@@ -1,6 +1,6 @@
+import RichEditor from "components/Editor/RichEditor";
 import "draft-js/dist/Draft.css";
 import "./App.css";
-import RichEditor from "./components/RichEditor/RichEditor";
 
 function App() {
   return (

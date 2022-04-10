@@ -1,3 +1,4 @@
+import Link from "components/Editor/components/Link";
 import { CompositeDecorator } from "draft-js";
 
 function findLinkEntities(contentBlock, callback, contentState) {
@@ -7,15 +8,6 @@ function findLinkEntities(contentBlock, callback, contentState) {
   }, callback);
 }
 
-export const Link = (props) => {
-  const { contentState, entityKey } = props;
-  const { url } = contentState.getEntity(entityKey).getData();
-  return (
-    <a href={url} rel="noopener noreferrer" target="_blank" aria-label={url}>
-      {props.children}
-    </a>
-  );
-};
 export const linkDecorator = () =>
   new CompositeDecorator([
     {
