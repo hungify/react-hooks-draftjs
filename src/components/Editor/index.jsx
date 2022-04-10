@@ -71,8 +71,12 @@ export default function RichEditor() {
   };
 
   const handleToggleBlockType = (blockType, e, active) => {
-    if (blockType === "Link" && active) {
-      setUrlType(blockType.toUpperCase());
+    setEditorState(RichUtils.toggleBlockType(editorState, blockType));
+  };
+
+  const handleToggleInlineType = (inlineType, e, active) => {
+    if (inlineType === "LINK" && active) {
+      setUrlType(inlineType);
       e.preventDefault();
       const selection = editorState.getSelection();
       if (!selection.isCollapsed()) {
@@ -89,17 +93,13 @@ export default function RichEditor() {
         }
         setShowURLInput(true);
       }
-    } else if (blockType === "Image" && active) {
+    } else if (inlineType === "IMAGE" && active) {
       setShowURLInput(true);
-      setUrlType(blockType.toLowerCase());
+      setUrlType(inlineType);
       setUrlValue("");
     } else {
       setShowURLInput(false);
     }
-    setEditorState(RichUtils.toggleBlockType(editorState, blockType));
-  };
-
-  const handleToggleInlineType = (inlineType, e, active) => {
     setEditorState(RichUtils.toggleInlineStyle(editorState, inlineType));
   };
 
@@ -127,7 +127,7 @@ export default function RichEditor() {
   };
 
   const handleConfirm = (e, type) => {
-    if (type === "image") {
+    if (type === "IMAGE") {
       handleConfirmImage(e);
     } else if (type === "LINK") {
       handleConfirmLink(e);
@@ -135,7 +135,7 @@ export default function RichEditor() {
   };
 
   const handleEnterDown = (e, type) => {
-    if (type === "image") {
+    if (type === "IMAGE") {
       handleConfirmImage(e);
     } else if (type === "LINK") {
       handleConfirmLink(e);
