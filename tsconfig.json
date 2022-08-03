@@ -10,7 +10,6 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "build",
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
