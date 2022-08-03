@@ -93,7 +93,7 @@ export default function RichEditor({ editorState, setEditorState }: RichEditorPr
   const handleToggleInlineType = (
     inlineType: string,
     evt: React.MouseEvent<HTMLButtonElement>,
-    active: boolean
+    active: boolean,
   ) => {
     if (inlineType === 'LINK' && active) {
       setUrlType(inlineType);
@@ -124,7 +124,7 @@ export default function RichEditor({ editorState, setEditorState }: RichEditorPr
   };
 
   const handleConfirmLink = (
-    evt: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>
+    evt: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
   ) => {
     evt.preventDefault();
     const contentState = editorState.getCurrentContent();
@@ -137,7 +137,7 @@ export default function RichEditor({ editorState, setEditorState }: RichEditorPr
   };
 
   const handleConfirmImage = (
-    evt: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>
+    evt: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
   ) => {
     evt.preventDefault();
     const contentState = editorState.getCurrentContent();
@@ -198,7 +198,7 @@ export default function RichEditor({ editorState, setEditorState }: RichEditorPr
           editorState={editorState}
           onInlineToggle={handleToggleInlineType}
           onBlockToggle={handleToggleBlockType}
-          layout="vertical"
+          layout='vertical'
         />
 
         {showURLInput && (
