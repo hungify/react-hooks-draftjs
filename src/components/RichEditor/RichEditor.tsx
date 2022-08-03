@@ -8,7 +8,7 @@ import {
   EditorState,
   RichUtils,
 } from 'draft-js';
-import React from 'react';
+import React, { useMemo } from 'react';
 import PromptLink from './components/Prompt';
 import Toolbar from './components/Toolbar';
 import { Media } from './plugins';
@@ -191,6 +191,11 @@ export default function RichEditor({ editorState, setEditorState }: RichEditorPr
     return null;
   };
 
+  const showPlaceholder = useMemo(() => {
+    const isShow = editorState.getCurrentContent().getBlockMap().first().getType() !== 'unstyled';
+    return isShow;
+  }, [editorState]);
+
   return (
     <RichEditorRoot>
       <WrapEditor>
@@ -220,7 +225,7 @@ export default function RichEditor({ editorState, setEditorState }: RichEditorPr
             customStyleMap={styleMap}
             editorState={editorState}
             onChange={(value) => setEditorState(value)}
-            placeholder={editorState.getCurrentContent().hasText() ? '' : 'Start writing...'}
+            placeholder={showPlaceholder ? '' : 'Start writing...'}
             handleKeyCommand={handleKeyCommand}
             ref={editorRef}
           />
