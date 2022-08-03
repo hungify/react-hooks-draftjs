@@ -1,12 +1,12 @@
 import { Col, Divider, Row } from 'antd';
 import Draft, { Editor, EditorState, RichUtils } from 'draft-js';
 import { useState } from 'react';
-import PreviewJson from '../components/PreviewJson';
+import PreviewJson from '~/components/PreviewJson';
 
 export default function RichUtilsSimple() {
   const [editorState, setEditorState] = useState(() => {
     const contentState = Draft.ContentState.createFromText(
-      'I am a cat in french. I am walking on sunshine'
+      'I am a cat in french. I am walking on sunshine',
     );
     return EditorState.createWithContent(contentState);
   });
@@ -52,10 +52,10 @@ export default function RichUtilsSimple() {
         </ul>
       </Col>
       <Col span={12}>
-        <Divider orientation="left">Editor</Divider>
+        <Divider orientation='left'>Editor</Divider>
 
         {/* Controlled Contenteditable */}
-        <div className="editor">
+        <div className='editor'>
           <Editor
             editorState={editorState}
             onChange={handleOnChange}
@@ -65,7 +65,7 @@ export default function RichUtilsSimple() {
       </Col>
 
       <Col span={12}>
-        <Divider orientation="left">Json View</Divider>
+        <Divider orientation='left'>Json View</Divider>
         <PreviewJson editorState={editorState} />
       </Col>
     </Row>

@@ -25,12 +25,12 @@ interface ToolbarProps {
   onInlineToggle: (
     styleType: string,
     evt: React.MouseEvent<HTMLButtonElement>,
-    active: boolean
+    active: boolean,
   ) => void;
   onBlockToggle: (
     styleType: string,
     evt: React.MouseEvent<HTMLButtonElement>,
-    active: boolean
+    active: boolean,
   ) => void;
 }
 

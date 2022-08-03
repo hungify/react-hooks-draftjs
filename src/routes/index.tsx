@@ -1,13 +1,13 @@
-import BlockFunction from '../pages/BlockFunction';
-import ContentState from '../pages/ContentState';
-import CreateContentState from '../pages/CreateContentState';
-import Entity from '../pages/Entity';
-import HashTags from '../pages/HashTags';
-import MediumDraftEditor from '../pages/MediumDraftEditor';
-import MyRichEditor from '../pages/MyRichEditor';
-import RichUtilsSimple from '../pages/RichUtilsSimple';
-import SelectionState from '../pages/SelectionState';
-import Simple from '../pages/Simple';
+import BlockFunction from '~/pages/BlockFunction';
+import ContentState from '~/pages/ContentState';
+import CreateContentState from '~/pages/CreateContentState';
+import Entities from '~/pages/Entities';
+import Hashtag from '~/pages/Hashtag';
+import MediumDraftEditor from '~/pages/MediumDraftEditor';
+import MyRichEditor from '~/pages/MyRichEditor';
+import RichUtilsSimple from '~/pages/RichUtilsSimple';
+import SelectionState from '~/pages/SelectionState';
+import Simple from '~/pages/Simple';
 
 const routesDefine = [
   {
@@ -33,7 +33,7 @@ const routesDefine = [
   {
     path: '/entities',
     text: 'Entities',
-    element: <Entity />,
+    element: <Entities />,
   },
   {
     path: '/rich-utils',
@@ -48,7 +48,7 @@ const routesDefine = [
   {
     path: '/hashtags',
     text: 'HashTags Simple',
-    element: <HashTags />,
+    element: <Hashtag />,
   },
   {
     path: '/my-rich-editor',

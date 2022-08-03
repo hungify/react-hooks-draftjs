@@ -6,7 +6,7 @@ type Callback = (start: number, end: number) => void;
 function findLinkStrategy(
   contentBlock: ContentBlock,
   callback: Callback,
-  contentState: ContentState
+  contentState: ContentState,
 ) {
   contentBlock.findEntityRanges((character) => {
     const entityKey = character.getEntity();

@@ -1,8 +1,8 @@
 import { Col, Divider, Row } from 'antd';
 import { Editor, EditorState } from 'draft-js';
 import { useState } from 'react';
-import PreviewJson from '../components/PreviewJson';
-import PreviewPlainText from '../components/PreviewPlainText';
+import PreviewJson from '~/components/PreviewJson';
+import PreviewPlainText from '~/components/PreviewPlainText';
 
 export default function ContentState() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -27,18 +27,18 @@ export default function ContentState() {
         </p>
       </Col>
       <Col span={12}>
-        <Divider orientation="left">Editor</Divider>
+        <Divider orientation='left'>Editor</Divider>
 
-        <div className="editor">
+        <div className='editor'>
           <Editor editorState={editorState} onChange={handleOnChange} />
         </div>
 
-        <Divider orientation="left">Plaintext retrieve from contentState</Divider>
+        <Divider orientation='left'>Plaintext retrieve from contentState</Divider>
         <PreviewPlainText editorState={editorState} />
       </Col>
 
       <Col span={12}>
-        <Divider orientation="left">Json View</Divider>
+        <Divider orientation='left'>Json View</Divider>
         <PreviewJson editorState={editorState} />
       </Col>
     </Row>

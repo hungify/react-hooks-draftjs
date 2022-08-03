@@ -16,7 +16,7 @@ export default function PreviewHtml({ editorState }: PreviewPlainTextProps) {
 
   return (
     <div
-      className="preview"
+      className='preview'
       dangerouslySetInnerHTML={{
         __html: getPreviewHTML(),
       }}
