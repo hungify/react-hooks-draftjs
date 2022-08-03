@@ -11,7 +11,7 @@ import {
   Link,
   NumberedList,
   Underline,
-} from '../components/Icons';
+} from '~/components/Icons';
 
 const inline = [
   { label: 'Bold', style: 'BOLD', icon: Bold },

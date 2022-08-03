@@ -2,7 +2,7 @@ import { EyeOutlined } from '@ant-design/icons';
 import { Button, Col, Divider, Form, Input, Modal, Row } from 'antd';
 import Draft, { Editor, EditorState } from 'draft-js';
 import { useState } from 'react';
-import PreviewJson from '../components/PreviewJson';
+import PreviewJson from '~/components/PreviewJson';
 
 export function getJsonSelectionString(editorState: EditorState) {
   // the editorState has a getSelection() method to get the selection
@@ -33,7 +33,7 @@ export default function SelectionState() {
   const [isJsonView, setIsJsonView] = useState(false);
   const [editorState, setEditorState] = useState(() => {
     const contentState = Draft.ContentState.createFromText(
-      'SelectionState represents the cursor, its position and what it is selecting. You can use selection to manipulate text such as inserting or deleting.'
+      'SelectionState represents the cursor, its position and what it is selecting. You can use selection to manipulate text such as inserting or deleting.',
     );
     return Draft.EditorState.createWithContent(contentState);
   });
@@ -59,6 +59,7 @@ export default function SelectionState() {
     setEditorState(newEditorState);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function onSubmitForm(values: any) {
     const anchorOffset = parseInt(values.anchorOffset || 0) || 0;
     const focusOffset = parseInt(values.focusOffset || 0) || 0;
@@ -80,41 +81,41 @@ export default function SelectionState() {
 
       {/* Demo Editor */}
       <Col span={12}>
-        <Divider orientation="left">
+        <Divider orientation='left'>
           Editor
           <Button
             onClick={() => setIsJsonView(true)}
-            shape="circle"
-            type="primary"
+            shape='circle'
+            type='primary'
             icon={<EyeOutlined />}
           />
         </Divider>
 
         {/* Editor Draft-Js  */}
-        <div className="editor">
+        <div className='editor'>
           <Editor editorState={editorState} onChange={handleOnChange} />
         </div>
 
-        <Divider orientation="left">Set Selection by offset</Divider>
+        <Divider orientation='left'>Set Selection by offset</Divider>
         <Form onFinish={onSubmitForm}>
           <Row gutter={30}>
             {/* Anchor Offset Input */}
             <Col span={12}>
-              <Form.Item name="anchorOffset">
-                <Input size="large" placeholder="Enter anchorOffset" type="number" />
+              <Form.Item name='anchorOffset'>
+                <Input size='large' placeholder='Enter anchorOffset' type='number' />
               </Form.Item>
             </Col>
 
             {/* Focus Offset Input */}
             <Col span={12}>
-              <Form.Item name="focusOffset">
-                <Input size="large" placeholder="Enter focusOffset" type="number" />
+              <Form.Item name='focusOffset'>
+                <Input size='large' placeholder='Enter focusOffset' type='number' />
               </Form.Item>
             </Col>
 
             {/* Button Submit */}
             <Col span={24}>
-              <Button type="primary" htmlType="submit" size="large">
+              <Button type='primary' htmlType='submit' size='large'>
                 Set Selection
               </Button>
             </Col>
@@ -124,14 +125,14 @@ export default function SelectionState() {
 
       {/* Json View Selection State */}
       <Col span={12}>
-        <Divider orientation="left">Json View Selection State</Divider>
+        <Divider orientation='left'>Json View Selection State</Divider>
         <pre>{jsonSelectionState}</pre>
       </Col>
 
       <Modal
-        width="600px"
+        width='600px'
         visible={isJsonView}
-        className="modal-json-view"
+        className='modal-json-view'
         onOk={() => setIsJsonView(false)}
         onCancel={() => setIsJsonView(false)}
       >

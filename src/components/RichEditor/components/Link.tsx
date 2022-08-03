@@ -8,7 +8,7 @@ interface LinkProps {
 export default function Link({ contentState, entityKey, children }: LinkProps) {
   const { url } = contentState.getEntity(entityKey).getData();
   return (
-    <a href={url} rel="noopener noreferrer" target="_blank">
+    <a href={url} rel='noopener noreferrer' target='_blank'>
       {children}
     </a>
   );

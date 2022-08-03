@@ -25,15 +25,15 @@
   },
   "plugins": ["react", "@typescript-eslint", "import", "jsx-a11y", "react-hooks", "prettier"],
   "rules": {
-    "@typescript-eslint/no-explicit-any": "warn",
-    "@typescript-eslint/no-non-null-assertion": "off",
     "no-nested-ternary": "error",
     "camelcase": ["error", { "ignoreImports": false }],
     "no-unneeded-ternary": "error",
     "arrow-spacing": "error",
-    "no-confusing-arrow": ["error", { "allowParens": true, "onlyOneSimpleParam": false }],
     "prefer-const": "error",
     "prefer-template": "error",
+
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
@@ -46,12 +46,6 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
 
-    "prettier/prettier": [
-      "warn",
-      {
-        "endOfLine": "auto",
-        "singleQuote": true
-      }
-    ]
+    "prettier/prettier": "error"
   }
 }

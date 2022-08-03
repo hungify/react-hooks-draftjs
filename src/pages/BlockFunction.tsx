@@ -1,12 +1,12 @@
 import { Button, Col, Divider, Input, Row } from 'antd';
 import Draft, { Editor, EditorState } from 'draft-js';
 import { useState } from 'react';
-import PreviewJson from '../components/PreviewJson';
+import PreviewJson from '~/components/PreviewJson';
 
 const defaultImage =
   'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg';
 
-export default function Simple() {
+export default function BlockFunction() {
   const [urlImage, setUrlImage] = useState(defaultImage);
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
@@ -28,7 +28,7 @@ export default function Simple() {
     const newEditorStateWithBlock = Draft.AtomicBlockUtils.insertAtomicBlock(
       newEditorState,
       entityKey,
-      ' '
+      ' ',
     );
 
     // setUrlImage('');
@@ -40,6 +40,7 @@ export default function Simple() {
     if (contentBlock.getType() === 'atomic') {
       return {
         // The component is a method that will return our custom react component.
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         component: (props: any) => {
           // get the entity
           const entity = props.contentState.getEntity(props.block.getEntityAt(0));
@@ -47,7 +48,7 @@ export default function Simple() {
           const { src } = entity.getData(); // ???
 
           // return our custom react component
-          return <img src={src} alt={src} className="draftImg" />;
+          return <img src={src} alt={src} className='draftImg' />;
         },
         editable: false,
       };
@@ -63,10 +64,10 @@ export default function Simple() {
         <p>In this example, an image is inserted directly into the editor.</p>
       </Col>
       <Col span={12}>
-        <Divider orientation="left">Editor</Divider>
+        <Divider orientation='left'>Editor</Divider>
 
         {/* Controlled Contenteditable */}
-        <div className="editor">
+        <div className='editor'>
           <Editor
             editorState={editorState}
             onChange={handleOnChange}
@@ -75,24 +76,24 @@ export default function Simple() {
         </div>
 
         {/* Insert Image */}
-        <Divider orientation="left">Insert Image</Divider>
+        <Divider orientation='left'>Insert Image</Divider>
 
         <Row gutter={30}>
           <Col span={24}>
             <Input
               value={urlImage}
               onChange={(e) => setUrlImage(e.target.value)}
-              size="large"
-              type="text"
-              placeholder="Enter the url image"
+              size='large'
+              type='text'
+              placeholder='Enter the url image'
             />
           </Col>
           <Col span={6}>
             <Button
               style={{ marginTop: '1rem' }}
               onClick={handleInsertImage}
-              size="large"
-              type="primary"
+              size='large'
+              type='primary'
             >
               Insert Image
             </Button>
@@ -101,7 +102,7 @@ export default function Simple() {
       </Col>
 
       <Col span={12}>
-        <Divider orientation="left">Json View</Divider>
+        <Divider orientation='left'>Json View</Divider>
         <PreviewJson editorState={editorState} />
       </Col>
     </Row>
