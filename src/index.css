@@ -1,13 +1,82 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.layout-custom {
+  min-height: 100vh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.layout-custom .trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.layout-custom .trigger:hover {
+  color: #1890ff;
+}
+
+.layout-custom .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.site-layout .site-layout-content {
+  margin: 24px 16px;
+  padding: 24px;
+  min-height: 280px;
+}
+
+.editor {
+  padding: 1rem;
+  font-size: 1.2rem;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.3);
+}
+
+.ant-divider-inner-text > .ant-btn {
+  margin-left: 0.5rem;
+}
+
+.json-object-input .ant-input {
+  color: rgba(0, 0, 0, 0.25);
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+pre {
+  background: #272822;
+  padding: 1rem;
+  color: #f8f8f2;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  border-radius: 0.3em;
+}
+
+h1,
+:-webkit-any(article, aside, nav, section) h1 {
+  font-size: 2em;
+}
+
+.public-DraftStyleDefault-block {
+  margin-bottom: 1rem;
+}
+
+.preview {
+  font-size: 1.2rem;
+}
+
+.wysiwyg-hashtag,
+.wysiwyg-hashtag:hover {
+  background-color: #dce6f8;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.draftImg {
+  max-width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
