@@ -2,8 +2,8 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import 'antd/dist/antd.css';
 import 'draft-js/dist/Draft.css';
-import { useState } from 'react';
-import { Link, useLocation, useRoutes } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate, useRoutes } from 'react-router-dom';
 import routesDefine from './routes';
 import LogoReact from '~/assets/react.svg';
 
@@ -12,8 +12,13 @@ function App() {
   const { Header, Sider, Content } = Layout;
   const [collapsed, setCollapsed] = useState(false);
   const pathname = useLocation().pathname || 'simple';
+  const navigate = useNavigate();
 
   const toggle = () => setCollapsed(!collapsed);
+
+  useEffect(() => {
+    navigate('/simple');
+  }, []);
 
   return (
     <div className='App'>
@@ -23,12 +28,7 @@ function App() {
             <img src={LogoReact} alt='react logo' className='logo' />
             <img src='/vite.svg' alt='react logo' className='logo' />
           </Link>
-          <Menu
-            theme='dark'
-            mode='inline'
-            defaultSelectedKeys={['/simple']}
-            selectedKeys={[pathname]}
-          >
+          <Menu theme='dark' mode='inline' selectedKeys={[pathname]}>
             {routesDefine.map((r) => {
               return (
                 <Menu.Item key={r.path}>
