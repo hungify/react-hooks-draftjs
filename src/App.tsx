@@ -5,7 +5,7 @@ import 'draft-js/dist/Draft.css';
 import { useState } from 'react';
 import { Link, useLocation, useRoutes } from 'react-router-dom';
 import routesDefine from './routes';
-import LogoReact from './assets/react.svg';
+import LogoReact from '~/assets/react.svg';
 
 function App() {
   const routes = useRoutes(routesDefine);
@@ -16,16 +16,16 @@ function App() {
   const toggle = () => setCollapsed(!collapsed);
 
   return (
-    <div className="App">
-      <Layout className="layout-custom">
+    <div className='App'>
+      <Layout className='layout-custom'>
         <Sider trigger={null} collapsible collapsed={collapsed}>
-          <Link to="/simple">
-            <img src={LogoReact} alt="react logo" className="logo" />
-            <img src={'/vite.svg'} alt="react logo" className="logo" />
+          <Link to='/simple'>
+            <img src={LogoReact} alt='react logo' className='logo' />
+            <img src='/vite.svg' alt='react logo' className='logo' />
           </Link>
           <Menu
-            theme="dark"
-            mode="inline"
+            theme='dark'
+            mode='inline'
             defaultSelectedKeys={['/simple']}
             selectedKeys={[pathname]}
           >
@@ -38,15 +38,15 @@ function App() {
             })}
           </Menu>
         </Sider>
-        <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }}>
+        <Layout className='site-layout'>
+          <Header className='site-layout-background' style={{ padding: 0 }}>
             {collapsed ? (
-              <MenuUnfoldOutlined className="trigger" onClick={toggle} />
+              <MenuUnfoldOutlined className='trigger' onClick={toggle} />
             ) : (
-              <MenuFoldOutlined className="trigger" onClick={toggle} />
+              <MenuFoldOutlined className='trigger' onClick={toggle} />
             )}
           </Header>
-          <Content className="site-layout-background site-layout-content">{routes}</Content>
+          <Content className='site-layout-background site-layout-content'>{routes}</Content>
         </Layout>
       </Layout>
     </div>

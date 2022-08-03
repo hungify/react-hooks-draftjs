@@ -1,7 +1,7 @@
 import { Button, Col, Divider, Form, Input, Row, Select, Tag } from 'antd';
 import Draft, { Editor, EditorState } from 'draft-js';
 import { useState } from 'react';
-import PreviewJson from '../components/PreviewJson';
+import PreviewJson from '~/components/PreviewJson';
 import { getJsonSelectionString } from './SelectionState';
 
 function getEntityAtCursor(editorState: EditorState) {
@@ -28,7 +28,7 @@ function getEntityAtCursor(editorState: EditorState) {
 export default function Entities() {
   const [editorState, setEditorState] = useState(() => {
     const contentState = Draft.ContentState.createFromText(
-      'I am a cat in french\nI am walking on sunshine'
+      'I am a cat in french\nI am walking on sunshine',
     );
     return Draft.EditorState.createWithContent(contentState);
   });
@@ -60,6 +60,7 @@ export default function Entities() {
     setEditorState(newEditorState);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function onSubmitForm(values: any) {
     const data = values.data;
     const mutability = values.mutability;
@@ -84,56 +85,56 @@ export default function Entities() {
       </Col>
 
       <Col span={12}>
-        <Divider orientation="left">Editor</Divider>
+        <Divider orientation='left'>Editor</Divider>
 
         {/* Controlled Contenteditable */}
-        <div className="editor">
+        <div className='editor'>
           <Editor editorState={editorState} onChange={handleOnChange} />
         </div>
 
         {/* Form create a entity */}
-        <Divider orientation="left">Create an entity</Divider>
+        <Divider orientation='left'>Create an entity</Divider>
         <Form onFinish={onSubmitForm} initialValues={{ data: '', mutability: 'MUTABLE' }}>
           <Row gutter={30}>
             {/* Anchor Offset Input */}
             <Col span={12}>
-              <Form.Item name="data">
-                <Input size="large" placeholder="Data string to save" />
+              <Form.Item name='data'>
+                <Input size='large' placeholder='Data string to save' />
               </Form.Item>
             </Col>
 
             {/* Focus Offset Input */}
             <Col span={12}>
-              <Form.Item name="mutability">
-                <Select size="large">
-                  <Select.Option value="MUTABLE">MUTABLE</Select.Option>
-                  <Select.Option value="IMMUTABLE">IMMUTABLE</Select.Option>
-                  <Select.Option value="SEGMENTED">SEGMENTED</Select.Option>
+              <Form.Item name='mutability'>
+                <Select size='large'>
+                  <Select.Option value='MUTABLE'>MUTABLE</Select.Option>
+                  <Select.Option value='IMMUTABLE'>IMMUTABLE</Select.Option>
+                  <Select.Option value='SEGMENTED'>SEGMENTED</Select.Option>
                 </Select>
               </Form.Item>
             </Col>
 
             {/* Button Submit */}
             <Col span={12}>
-              <Button type="primary" htmlType="submit" size="large">
+              <Button type='primary' htmlType='submit' size='large'>
                 Set Selection
               </Button>
             </Col>
 
             {/* Retrieved Data based on selection state */}
             <Col>
-              <h3>Retrieved Data {retrievedData && <Tag color="#87d068">{retrievedData}</Tag>}</h3>
+              <h3>Retrieved Data {retrievedData && <Tag color='#87d068'>{retrievedData}</Tag>}</h3>
             </Col>
           </Row>
         </Form>
 
         {/* Json View of Selection State */}
-        <Divider orientation="left">Json View Selection State</Divider>
+        <Divider orientation='left'>Json View Selection State</Divider>
         <pre>{getJsonSelectionString(editorState).jsonSelectionState}</pre>
       </Col>
 
       <Col span={12}>
-        <Divider orientation="left">Json View</Divider>
+        <Divider orientation='left'>Json View</Divider>
         <PreviewJson editorState={editorState} />
       </Col>
     </Row>
