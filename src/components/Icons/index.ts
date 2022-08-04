@@ -10,3 +10,4 @@ export { default as HeadingTwo } from './HeadingTwo';
 export { default as HeadingThree } from './HeadingThree';
 export { default as Link } from './Link';
 export { default as NumberedList } from './NumberedList';
+export { default as CodeBlock } from './CodeBlock';

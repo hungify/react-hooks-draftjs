@@ -3,6 +3,7 @@ import {
   Bold,
   BulletedList,
   Code,
+  CodeBlock,
   HeadingOne,
   HeadingThree,
   HeadingTwo,
@@ -17,9 +18,9 @@ const inline = [
   { label: 'Bold', style: 'BOLD', icon: Bold },
   { label: 'Italic', style: 'ITALIC', icon: Italic },
   { label: 'Underline', style: 'UNDERLINE', icon: Underline },
-  { label: 'Code', style: 'CODE', icon: Code },
   { label: 'Link', style: 'LINK', icon: Link },
   { label: 'Image', style: 'IMAGE', icon: Image },
+  { label: 'Monospace', style: 'CODE', icon: Code },
 ] as const;
 
 const block = [
@@ -29,6 +30,7 @@ const block = [
   { label: 'Blockquote', style: 'blockquote', icon: BlockQuote },
   { label: 'OL', style: 'ordered-list-item', icon: NumberedList },
   { label: 'UL', style: 'unordered-list-item', icon: BulletedList },
+  { label: 'Code Block', style: 'code-block', icon: CodeBlock },
 ] as const;
 
 export const allTypes = {

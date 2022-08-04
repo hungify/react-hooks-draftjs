@@ -1,24 +1,19 @@
-import draftToHtml from 'draftjs-to-html';
-import Draft, { EditorState } from 'draft-js';
+import { EditorState } from 'draft-js';
+import { convertToHtml } from '~/utils/editor';
+import compositeDecorator from '../RichEditor/plugins';
 
-interface PreviewPlainTextProps {
+interface PreviewHtmlProps {
   editorState: EditorState;
 }
-export default function PreviewHtml({ editorState }: PreviewPlainTextProps) {
-  function getPreviewHTML() {
-    const rawContentState = Draft.convertToRaw(editorState.getCurrentContent());
-    const markup = draftToHtml(rawContentState, {
-      trigger: '#',
-      separator: ' ',
-    });
-    return markup;
-  }
+
+export default function PreviewHtml({ editorState }: PreviewHtmlProps) {
+  const __html = convertToHtml(editorState, compositeDecorator);
 
   return (
     <div
       className='preview'
       dangerouslySetInnerHTML={{
-        __html: getPreviewHTML(),
+        __html,
       }}
     />
   );

@@ -48,20 +48,14 @@
 }
 
 pre {
-  background: #272822;
   padding: 1rem;
-  color: #f8f8f2;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   border-radius: 0.3em;
+  margin: 0;
 }
 
 h1,
 :-webkit-any(article, aside, nav, section) h1 {
   font-size: 2em;
-}
-
-.public-DraftStyleDefault-block {
-  margin-bottom: 1rem;
 }
 
 .preview {
@@ -79,4 +73,25 @@ h1,
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+blockquote {
+  border-left: 5px solid #4ca8de;
+  color: #555;
+  font-size: 1.2em;
+  padding: 5px 20px;
+  background-color: #e2f2ff;
+}
+
+.DraftEditor-root .public-DraftStyleDefault-pre {
+  background: rgba(0, 0, 0, 0.05);
+  font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+  font-size: 16px;
+}
+
+.preview pre {
+  background: rgba(0, 0, 0, 0.05);
+  font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+  font-size: 16px;
+  padding: 2rem;
 }

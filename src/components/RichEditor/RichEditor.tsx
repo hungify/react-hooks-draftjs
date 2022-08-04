@@ -8,7 +8,7 @@ import {
   EditorState,
   RichUtils,
 } from 'draft-js';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import PromptLink from './components/Prompt';
 import Toolbar from './components/Toolbar';
 import { Media } from './plugins';
@@ -18,7 +18,7 @@ const styleMap: DraftStyleMap = {
     backgroundColor: 'rgba(0, 0, 0, 0.05)',
     fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
     fontSize: 16,
-    padding: 2,
+    padding: '3px 8px',
   },
 };
 
@@ -44,9 +44,9 @@ interface RichEditorProps {
 }
 
 export default function RichEditor({ editorState, setEditorState }: RichEditorProps) {
-  const [showURLInput, setShowURLInput] = React.useState(false);
-  const [urlValue, setUrlValue] = React.useState('');
-  const [urlType, setUrlType] = React.useState('');
+  const [showURLInput, setShowURLInput] = useState(false);
+  const [urlValue, setUrlValue] = useState('');
+  const [urlType, setUrlType] = useState('');
 
   const editorRef = React.useRef<Editor | null>(null);
   const urlRef = React.useRef<HTMLInputElement | null>(null);
@@ -171,8 +171,6 @@ export default function RichEditor({ editorState, setEditorState }: RichEditorPr
     switch (block.getType()) {
       case 'blockquote':
         return 'RichEditor-blockquote';
-      case 'new-block-type-name':
-        return 'RichEditor-new-block-type-name';
       default:
         return '';
     }

@@ -3,10 +3,11 @@ import styled from '@emotion/styled';
 import { SVGProps } from 'react';
 
 export const Button = styled.button<Pick<ButtonMarkProps, 'active'>>`
+  display: inline-flex;
+  align-items: center;
   border: none;
-  padding: 0.25rem;
-  width: 2rem;
-  margin: 2px;
+  padding: 6px;
+  margin: 4px;
   border-radius: 6px;
   outline: none;
   cursor: pointer;
