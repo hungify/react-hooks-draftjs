@@ -1,15 +1,12 @@
-import { convertToRaw, EditorState } from 'draft-js';
+import { EditorState } from 'draft-js';
+import { convertToJson } from '~/utils/editor';
 
 interface PreviewJsonProps {
   editorState: EditorState;
 }
-export default function PreviewJson({ editorState }: PreviewJsonProps) {
-  const jsonContent = () => {
-    const contentState = editorState.getCurrentContent();
-    const rawJson = convertToRaw(contentState); // This is important
-    const jsonStr = JSON.stringify(rawJson, null, 1);
-    return jsonStr;
-  };
 
-  return <pre>{jsonContent()}</pre>;
+export default function PreviewJson({ editorState }: PreviewJsonProps) {
+  const jsonContent = convertToJson(editorState);
+
+  return <pre>{jsonContent}</pre>;
 }

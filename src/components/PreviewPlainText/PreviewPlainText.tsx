@@ -1,13 +1,11 @@
 import { EditorState } from 'draft-js';
+import { convertToPlainText } from '~/utils/editor';
 
 interface PreviewPlainTextProps {
   editorState: EditorState;
 }
 export default function PreviewPlainText({ editorState }: PreviewPlainTextProps) {
-  const plainText = () => {
-    const contentState = editorState.getCurrentContent();
-    return contentState.getPlainText();
-  };
+  const plainText = convertToPlainText(editorState);
 
-  return <div>{plainText()}</div>;
+  return <div>{plainText}</div>;
 }
